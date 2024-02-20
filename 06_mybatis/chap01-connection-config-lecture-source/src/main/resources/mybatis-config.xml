@@ -19,3 +19,4 @@
         <mapper resource="mapper.xml"/>
     </mappers>
 </configuration>
+<!-- resource 부분을 경로처럼 적어둬도 된다. -->
