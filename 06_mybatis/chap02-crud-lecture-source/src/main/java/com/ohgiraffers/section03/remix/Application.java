@@ -1,9 +1,12 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section03.remix;
+
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/* 설명. remix의 핵심은 DAO 계층을 인터페이스로 만들고 추상메소드만 남기는 방식이다. */
+/* 설명. 쿼리가 있는 부분은 XML로 작성한다.(mapper용 쿼리) */
 public class Application {
 
     public static void main(String[] args) {
@@ -25,19 +28,19 @@ public class Application {
 
             switch (no){
                 case 1:
-                    menuController.findAllMenus();
+                    menuController.findAllMenu();
                     break;
                 case 2:
-                    menuController.findMenuByMenuCode(inputMenuCode());
+                    menuController.selectMenu(inputMenuCode());
                     break;
                 case 3:
-                    menuController.registMenu(inputMenu());
+                    menuController.insertMenu(inputMenu());
                     break;
                 case 4:
-                    menuController.modifyMenu(inputModifyMenu());
+                    menuController.updateMenu(inputModifyMenu());
                     break;
                 case 5:
-                    menuController.removeMenu(inputMenuCode());
+                    menuController.deleteMenu(inputMenuCode());
                     break;
                 case 9:
                     System.out.println("프로그램을 종료합니다.");
