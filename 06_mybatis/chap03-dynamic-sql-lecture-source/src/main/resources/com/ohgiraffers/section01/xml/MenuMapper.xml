@@ -111,4 +111,66 @@
             #{menuCode}
         </foreach>
     </select>
+    <select id="searchMenuByCodeOrSearchAll" parameterType="com.ohgiraffers.section01.xml.SearchCriteria" resultMap="menuResultMap">
+        SELECT
+              A.MENU_CODE
+            , A.MENU_NAME
+            , A.MENU_PRICE
+            , A.CATEGORY_CODE
+            , A.ORDERABLE_STATUS
+         FROM TBL_MENU A
+        <if test="condition != null and condition eq 'menuCode'">
+            WHERE A.MENU_CODE = #{value}
+        </if>
+    </select>
+    <select id="searchMenuByNameOrCategory" parameterType="hashmap" resultMap="menuResultMap">
+        SELECT
+        A.MENU_CODE
+        , A.MENU_NAME
+        , A.MENU_PRICE
+        , A.CATEGORY_CODE
+        , A.ORDERABLE_STATUS
+        FROM TBL_MENU A
+<!--        <where>
+            <if test="nameValue != null">
+                A.MENU_NAME LIKE CONCAT('%', #{nameValue}, '%')
+            </if>
+            <if test="categoryValue != null">
+                AND A.CATEGORY_CODE = #{categoryValue}
+            </if>
+        </where>-->
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="nameValue != null">
+                A.MENU_NAME LIKE CONCAT('%', #{nameValue}, '%')
+            </if>
+            <if test="categoryValue != null">
+                AND A.CATEGORY_CODE = #{categoryValue}
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateMenu" parameterType="hashmap">
+        UPDATE
+                TBL_MENU
+<!--        <set>
+
+            <if test="menuName != null and menuName != ''">
+                MENU_NAME = #{menuName}
+
+            </if>
+            <if test="orderableStatus != null and orderableStatus != ''">
+                , ORDERABLE_STATUS = #{orderableStatus}
+            </if>
+        </set>-->
+        <trim prefix="SET" prefixOverrides=", ">
+            <if test="menuName != null and menuName != ''">
+                MENU_NAME = #{menuName}
+
+            </if>
+            <if test="orderableStatus != null and orderableStatus != ''">
+                , ORDERABLE_STATUS = #{orderableStatus}
+            </if>
+        </trim>
+          WHERE MENU_CODE = #{menuCode}
+    </update>
 </mapper>
