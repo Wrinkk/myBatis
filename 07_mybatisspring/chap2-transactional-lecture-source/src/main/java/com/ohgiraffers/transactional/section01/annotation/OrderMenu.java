@@ -8,6 +8,11 @@ public class OrderMenu {
     public OrderMenu() {
     }
 
+    public OrderMenu(int menuCode, int orderAmount) {
+        this.menuCode = menuCode;
+        this.orderAmount = orderAmount;
+    }
+
     public OrderMenu(int menuCode, int orderCode, int orderAmount) {
         this.menuCode = menuCode;
         this.orderCode = orderCode;

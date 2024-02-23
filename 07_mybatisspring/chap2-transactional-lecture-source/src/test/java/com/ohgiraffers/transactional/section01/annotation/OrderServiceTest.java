@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +18,9 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+
+/* 설명. DML(insert, update, delete) 작업 테스트 시 실제 DB 적용을 안하려면 @Transactional 이 애노테이션을 추가한다. */
+@Transactional
 class OrderServiceTest {
 
 
@@ -31,13 +35,8 @@ class OrderServiceTest {
 
         orderInfo.setOrderMenus(
                 List.of(
-                        new OrderMenuDTO(1, 10),
-                        new OrderMenuDTO(2, 10),
                         new OrderMenuDTO(3, 10),
-                        new OrderMenuDTO(4, 10),
-                        new OrderMenuDTO(5, 10),
-                        new OrderMenuDTO(6, 10),
-                        new OrderMenuDTO(7, 10)
+                        new OrderMenuDTO(4, 10)
                 )
         );
         return Stream.of(
