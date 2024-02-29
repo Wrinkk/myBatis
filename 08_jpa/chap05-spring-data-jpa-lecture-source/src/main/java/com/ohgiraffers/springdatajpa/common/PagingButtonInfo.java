@@ -1,9 +1,6 @@
 package com.ohgiraffers.springdatajpa.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,8 +9,6 @@ import lombok.ToString;
 public class PagingButtonInfo {
 
     private int currentPage;
-
     private int startPage;
-
     private int endPage;
 }

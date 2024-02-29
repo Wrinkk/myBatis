@@ -1,6 +1,5 @@
 package com.ohgiraffers.springdatajpa.menu.dto;
 
-import jakarta.persistence.Column;
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,8 +8,9 @@ import lombok.*;
 @Setter
 @ToString
 public class CategoryDTO {
-
     private int categoryCode;
+
     private String categoryName;
+
     private Integer refCategoryCode;
 }
